@@ -122,10 +122,7 @@ categorical_features = [
      'prelev_structure_code_2',
      'prelev_usage_label_2',
      'prelev_volume_obtention_mode_label_2',
-     'insee_%_agri',
      'insee_med_living_level',
-     'insee_%_ind',
-     'insee_%_const'
 ]
 
 preprocessing_map = {

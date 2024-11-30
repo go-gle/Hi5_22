@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class TimeFeaturesMonth:
     def __init__(self):
         pass
@@ -19,7 +20,8 @@ class TimeFeaturesYear:
 
     def transform(self: 'TimeFeaturesYear', col: pd.Series) -> pd.DataFrame:
         return pd.to_datetime(col).dt.year
-    
+
+
 class TimeFeaturesWeek:
     def __init__(self):
         pass
