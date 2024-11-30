@@ -8,10 +8,7 @@ class TimeFeaturesMonth:
         return self
 
     def transform(self: 'TimeFeaturesMonth', col: pd.Series) -> pd.DataFrame:
-        col = pd.to_datetime(col)
-        df = pd.DataFrame()
-        df['month'] = col.dt.month
-        return df['month']
+        return pd.to_datetime(col).dt.month
     
 class TimeFeaturesYear:
     def __init__(self):
@@ -21,10 +18,7 @@ class TimeFeaturesYear:
         return self
 
     def transform(self: 'TimeFeaturesYear', col: pd.Series) -> pd.DataFrame:
-        col = pd.to_datetime(col)
-        df = pd.DataFrame()
-        df['Year'] = col.dt.year
-        return df['Year']
+        return pd.to_datetime(col).dt.year
     
 class TimeFeaturesWeek:
     def __init__(self):
@@ -34,10 +28,7 @@ class TimeFeaturesWeek:
         return self
 
     def transform(self: 'TimeFeaturesWeek', col: pd.Series) -> pd.Series:
-        col = pd.to_datetime(col)
-        df = pd.DataFrame()
-        df['Week'] = col.dt.week
-        return df['Week']
+        return pd.to_datetime(col).dt.week
     
 class TimeFeaturesSeason:
     def __init__(self):
