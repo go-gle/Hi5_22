@@ -1,5 +1,7 @@
 from preprocessing.nan_filling import CategoricalNanFiller, NumericalNanFiller
 from preprocessing.utils import preprocessing_map
+from tqdm import tqdm
+
 
 class Pipe:
     def __init__(self: 'Pipe',
@@ -14,7 +16,7 @@ class Pipe:
 
 
     def fit_transform(self:'Pipe', df):
-        for col in self.cols:
+        for col in tqdm(self.cols):
             if col in self.cat_cols_set:
                 filler = CategoricalNanFiller()
             elif col in self.num_cols_set:
@@ -31,7 +33,7 @@ class Pipe:
         return df
 
     def transform(self: 'Pipe', df):
-        for col in self.cols:
+        for col in tqdm(self.cols):
             df[col] = self.nan_fillers_dict[col].transform(df[col])
             df[col] = self.preproc_dict[col].transform(df[col])
         return df

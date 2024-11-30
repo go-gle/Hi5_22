@@ -1,8 +1,7 @@
-from .quantile_clipper import Identity, Clipper
+from preprocessing.quantile_clipper import Identity, Clipper
 from sklearn.preprocessing import LabelEncoder
 
 
-TARGET = "piezo_groundwater_level_category"
 numerical_features = [
      'piezo_station_investigation_depth',
      'piezo_station_altitude',
@@ -96,44 +95,32 @@ numerical_features = [
      'prelev_latitude_2',
      'prelev_commune_code_insee_2',
      'prelev_other_volume_sum',
-     'insee_pop_commune'
 ]
+TARGET = "piezo_groundwater_level_category"
+
+dates_features = ['piezo_measurement_date',
+                  'meteo_date',
+                  'hydro_observation_date_elab']
 
 categorical_features = [
-     'piezo_station_department_code',
-     'piezo_station_commune_code_insee',
-     'piezo_station_bss_id',
-     'piezo_bss_code',
-     'piezo_measurement_date',
      'piezo_obtention_mode',
      'piezo_status',
      'piezo_qualification',
-     'piezo_measure_nature_code',
-     'meteo_date',
-     'hydro_station_code',
-     'hydro_observation_date_elab',
      'hydro_hydro_quantity_elab',
-     'prelev_structure_code_0',
      'prelev_usage_label_0',
      'prelev_volume_obtention_mode_label_0',
-     'prelev_structure_code_1',
      'prelev_usage_label_1',
      'prelev_volume_obtention_mode_label_1',
-     'prelev_structure_code_2',
      'prelev_usage_label_2',
      'prelev_volume_obtention_mode_label_2',
-     'insee_med_living_level',
 ]
 
 preprocessing_map = {
 "piezo_station_department_code": LabelEncoder(),
 "piezo_station_investigation_depth": Clipper(),
-"piezo_station_commune_code_insee": LabelEncoder(),
 "piezo_station_altitude": Identity(),
 "piezo_station_longitude": Identity(),
 "piezo_station_latitude": Identity(),
-"piezo_station_bss_id": LabelEncoder(),
-"piezo_bss_code": LabelEncoder(),
 "piezo_measurement_date": Identity(),
 "piezo_obtention_mode": LabelEncoder(),
 "piezo_status": LabelEncoder(),
@@ -209,7 +196,6 @@ preprocessing_map = {
 "meteo_snow_thickness_max": Clipper(),
 "meteo_snow_thickness_6h": Clipper(),
 "distance_piezo_meteo": Clipper(),
-"hydro_station_code": LabelEncoder(),
 "hydro_observation_date_elab": Identity(),
 "hydro_observation_result_elab": Clipper(),
 "hydro_status_code": Identity(),
@@ -218,21 +204,18 @@ preprocessing_map = {
 "hydro_latitude":  Identity(),
 "hydro_hydro_quantity_elab": LabelEncoder(),
 "distance_piezo_hydro": Clipper(),
-"prelev_structure_code_0": Identity(),
 "prelev_volume_0": Clipper(),
 "prelev_usage_label_0": LabelEncoder(),
 "prelev_volume_obtention_mode_label_0": LabelEncoder(),
 "prelev_longitude_0": Identity(),
 "prelev_latitude_0": Identity(),
 "prelev_commune_code_insee_0": Identity(),
-"prelev_structure_code_1": Identity(),
 "prelev_volume_1": Clipper(),
 "prelev_usage_label_1": LabelEncoder(),
 "prelev_volume_obtention_mode_label_1": LabelEncoder(),
 "prelev_longitude_1": Identity(),
 "prelev_latitude_1": Identity(),
 "prelev_commune_code_insee_1": Identity(),
-"prelev_structure_code_2": Identity(),
 "prelev_volume_2": Clipper(),
 "prelev_usage_label_2": LabelEncoder(),
 "prelev_volume_obtention_mode_label_2": LabelEncoder(),
@@ -242,7 +225,6 @@ preprocessing_map = {
 "prelev_other_volume_sum": Clipper(),
 "insee_%_agri": Identity(),
 "insee_pop_commune": Clipper(),
-"insee_med_living_level": LabelEncoder(),
 "insee_%_ind": Identity(),
 "insee_%_const":  Identity()
                      }
