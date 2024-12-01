@@ -1,4 +1,4 @@
-from preprocessing.quantile_clipper import Identity, Clipper
+from preprocessing.preproc import Identity, Clipper
 from sklearn.preprocessing import LabelEncoder
 
 
@@ -104,7 +104,9 @@ dates_features = ['piezo_measurement_date',
 
 categorical_features = [
      'piezo_obtention_mode',
+    'piezo_station_department_code',
      'piezo_status',
+    'piezo_station_bss_id',
      'piezo_qualification',
      'hydro_hydro_quantity_elab',
      'prelev_usage_label_0',
@@ -114,6 +116,7 @@ categorical_features = [
      'prelev_usage_label_2',
      'prelev_volume_obtention_mode_label_2',
 ]
+
 
 preprocessing_map = {
 "piezo_station_department_code": LabelEncoder(),
@@ -148,6 +151,7 @@ preprocessing_map = {
 "meteo_temperature_avg_tntm": Clipper(),
 "meteo_pressure_avg": Clipper(),
 "meteo_pression_maxi": Clipper(),
+'piezo_station_bss_id': LabelEncoder(),
 "meteo_wind_speed_avg_10m": Clipper(),
 "meteo_wind_max": Clipper(),
 "meteo_wind_direction_max_inst": Clipper(),
@@ -228,3 +232,52 @@ preprocessing_map = {
 "insee_%_ind": Identity(),
 "insee_%_const":  Identity()
                      }
+uncorr_numerical = ['meteo_wind_max_2m',
+ 'meteo_if_smoke',
+ 'hydro_qualification_code',
+ 'meteo_time_wind_max_2m',
+ 'prelev_volume_0',
+ 'meteo_time_tx',
+ 'hydro_latitude',
+ 'hydro_observation_result_elab',
+ 'hydro_longitude',
+ 'meteo_if_thunderstorm',
+ 'meteo_temperature_min_50cm',
+ 'meteo_wind_avg',
+ 'meteo_radiation',
+ 'meteo_if_sleet',
+ 'prelev_commune_code_insee_0',
+ 'meteo_wind_direction_max_avg',
+ 'meteo_frost_duration',
+ 'piezo_station_investigation_depth',
+ 'meteo_time_tn',
+ 'meteo_wind_direction_max_inst_2m',
+ 'meteo_sunshine_%',
+ 'meteo_DRR',
+ 'piezo_continuity_code',
+ 'meteo_time_humidity_max',
+ 'meteo_time_humidity_min',
+ 'meteo_amplitude_tn_tx',
+ 'meteo_if_dew',
+ 'meteo_if_lightning',
+ 'meteo_humidity_avg',
+ 'meteo_rain_height',
+ 'meteo_if_hail',
+ 'meteo_evapotranspiration_grid',
+ 'meteo_if_black_ice',
+ 'hydro_status_code',
+ 'meteo_if_fog',
+ 'meteo_altitude',
+ 'meteo_time_wind_avg',
+ 'meteo_if_snow',
+ 'meteo__pressure_saturation_avg',
+ 'meteo_if_snow_ground',
+ 'meteo_if_mist',
+ 'meteo_id',
+ 'meteo_snow_thickness_6h',
+ 'meteo_pression_maxi',
+ 'meteo_if_frost',
+ 'piezo_producer_code',
+ 'prelev_other_volume_sum',
+ 'meteo_snow_height',
+ 'meteo_cloudiness']
