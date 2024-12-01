@@ -40,6 +40,6 @@ class TimeFeaturesSeason:
         return self
 
     def transform(self: 'TimeFeaturesSeason', col: pd.Series) -> pd.Series:
-        return col.apply(lambda x: self.map[x.month])
+        return col.apply(lambda x: self.map[x])
         
         
